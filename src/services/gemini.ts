@@ -17,7 +17,17 @@ export interface Article {
 export async function getTopStories(topic: string = "general"): Promise<StorySummary[]> {
   try {
     // Map your app topics to NewsAPI categories
-    const category = topic.toLowerCase().includes("world") ? "general" : topic.toLowerCase();
+   const categoryMap: { [key: string]: string } = {
+  "global news": "general",
+  "world": "general",
+  "business": "business",
+  "technology": "technology",
+  "science": "science",
+  "health": "health",
+  "sports": "sports",
+  "entertainment": "entertainment",
+};
+const category = categoryMap[topic.toLowerCase()] || "general";
     
 const response = await fetch(
   `/api/news?category=${category}`
