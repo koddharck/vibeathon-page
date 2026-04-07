@@ -14,13 +14,6 @@ export interface Article {
   sources: { title: string; uri: string }[];
 }
 
-const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY;
-const BASE_URL = 'https://newsapi.org/v2';
-
-/**
- * FETCH REAL NEWS FROM NEWSAPI
- * This replaces the "Senior Editor" prompt. It's faster and won't hit Gemini limits.
- */
 export async function getTopStories(topic: string = "general"): Promise<StorySummary[]> {
   try {
     // Map your app topics to NewsAPI categories
