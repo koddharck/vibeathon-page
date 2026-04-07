@@ -26,9 +26,9 @@ export async function getTopStories(topic: string = "general"): Promise<StorySum
     // Map your app topics to NewsAPI categories
     const category = topic.toLowerCase().includes("world") ? "general" : topic.toLowerCase();
     
-    const response = await fetch(
-      `${BASE_URL}/top-headlines?country=us&category=${category}&apiKey=${NEWS_API_KEY}`
-    );
+const response = await fetch(
+  `/api/news?category=${category}`
+);
     
     const data = await response.json();
 
